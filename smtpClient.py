@@ -1,7 +1,7 @@
 from socket import *
 
 
-def smtp_client(port=1025, mailserver='127.0.0.1'):
+def smtp_client(port=1025, mailserver="127.0.0.1"):
     msg = "\r\n My message"
 
     # Choose a mail server (e.g. Google mail server) if you want to verify the script beyond GradeScope
@@ -28,10 +28,10 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
 
     # Send MAIL FROM command and handle server response.
     # Fill in start
-    mailFrom="MailFrom:<alice@example.com>\r\n"
+    mailFrom="MAIL FROM:<alice@example.com>\r\n"
     clientSocket.send(mailFrom.encode())
-    recv2=clientSocket.recv(1024).encode()
-    print("Mail From:",recv2)
+    recv2=clientSocket.recv(1024).decode()
+    print("MAIL FROM:",recv2)
     if recv2[:3] != '250':
         print('250 reply not received from server')
     # Fill in end
